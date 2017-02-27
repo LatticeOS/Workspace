@@ -23,81 +23,16 @@
     <md-layout md-gutter style="margin-top: 2em;">
       <md-layout md-flex-xsmall="100" md-flex-small="33" md-flex-medium="25" md-flex-large="25" md-flex-xlarge="20">
         <md-list>
-          <md-list-item class="md-inset" href="#">Containers</md-list-item>
-          <md-list-item class="md-inset" href="#">Config</md-list-item>
-          <md-list-item class="md-inset" href="#">YAML</md-list-item>
-          <md-list-item class="md-inset" href="#">Logs</md-list-item>
-          <md-list-item class="md-inset" href="#">Setting</md-list-item>
+          <md-list-item class="md-inset" v-for="(link, key) in navs" :key="key">
+            <router-link :to="link.href"> {{ link.name }} </router-link>
+          </md-list-item>
         </md-list>
       </md-layout>
 
       <md-layout md-flex-xsmall="100" md-flex-small="67" md-flex-medium="75" md-flex-large="75" md-flex-xlarge="80">
         <md-card style="width:100%">
           <md-card-content>
-            <md-table v-once>
-              <md-table-header>
-                <md-table-row>
-                  <md-table-head>Statue</md-table-head>
-                  <md-table-head>Icon</md-table-head>
-                  <md-table-head>Alice&ID</md-table-head>
-                  <md-table-head>Image</md-table-head>
-                </md-table-row>
-              </md-table-header>
-
-              <md-table-body>
-                <md-table-row>
-                  <md-table-cell>
-                    <md-icon>check_circle</md-icon>
-                    <md-tooltip md-direction="top">Runing</md-tooltip>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <md-avatar>
-                      <img src="https://code.visualstudio.com/images/favicon.ico"/>
-                    </md-avatar>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <span>VSCode</span>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <span>los/vscode+vue2</span>
-                  </md-table-cell>
-                </md-table-row>
-                <md-table-row>
-                  <md-table-cell>
-                    <md-icon>check_circle</md-icon>
-                    <md-tooltip md-direction="top">Runing</md-tooltip>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <md-avatar>
-                      <img src="https://cn.vuejs.org/images/logo.png"/>
-                    </md-avatar>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <span>Vue2.x</span>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <span>los/vue2</span>
-                  </md-table-cell>
-                </md-table-row>
-                <md-table-row>
-                  <md-table-cell>
-                    <md-icon>check_circle</md-icon>
-                    <md-tooltip md-direction="top">Runing</md-tooltip>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <md-avatar>
-                      <img src="https://www.docker.com/sites/default/files/whale_0.png"/>
-                    </md-avatar>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <span>Data volume</span>
-                  </md-table-cell>
-                  <md-table-cell>
-                    <span>volume</span>
-                  </md-table-cell>
-                </md-table-row>
-              </md-table-body>
-            </md-table>
+            <router-view></router-view>
           </md-card-content>
         </md-card>
       </md-layout>
@@ -107,6 +42,30 @@
 
 <script>
 export default {
-  name: 'hello'
+  name: 'Workspace',
+  components: {
+  },
+  data () {
+    return {
+      navs: [
+        {
+          'name': 'Containers',
+          'href': './containers'
+        },
+        {
+          'name': 'YAML',
+          'href': './yaml'
+        },
+        {
+          'name': 'Logs',
+          'href': './logs'
+        },
+        {
+          'name': 'Options',
+          'href': './options'
+        }
+      ]
+    }
+  }
 }
 </script>

@@ -1,0 +1,13 @@
+{
+  "active": [
+    "hellonode", 
+    []
+  ], 
+  "projects": {
+    "env-demo": "/opt/docker-compose-projects/./env-demo", 
+    "hello-node": "/opt/docker-compose-projects/./hello-node", 
+    "node-redis": "/opt/docker-compose-projects/./node-redis", 
+    "volumes-demo": "/opt/docker-compose-projects/./volumes-demo", 
+    "volumes-relative-paths": "/opt/docker-compose-projects/./volumes-relative-paths"
+  }
+}

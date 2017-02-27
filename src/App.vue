@@ -26,12 +26,6 @@ export default {
   methods: {
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
-    },
-    toggleRightSidenav () {
-      this.$refs.rightSidenav.toggle()
-    },
-    closeRightSidenav () {
-      this.$refs.rightSidenav.close()
     }
   }
 }

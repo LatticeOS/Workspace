@@ -1,17 +1,14 @@
 <template>
     <md-sidenav class="md-left">
         <md-list>
-            <md-toolbar vue-material-logo md-theme-white>
-                <span>Workspaces</span>
-            </md-toolbar>
-            <md-list-item href="#">
+            <md-list-item v-for="key in active" :href="key" :key="key">
                 <md-avatar>
                     <img src="https://cn.vuejs.org/images/logo.png"/>
                 </md-avatar>
 
                 <div class="md-list-text-container">
-                    <span>Vue2.x</span>
-                    <p>vscode + webpack + vue2.x</p>
+                    <span>{{ projects[key]['key'] }}</span>
+                    <p>{{ projects[key]['project'] }}</p>
                 </div>
             </md-list-item>
             <md-list-item href="#">
@@ -34,6 +31,34 @@
 
 <script>
 export default {
-  name: 'hello'
+  name: 'hello',
+  data () {
+    return {
+      'active': [],
+      'projects': {}
+    }
+  },
+  methods: {
+    fetch_active_projects () {
+      this.$http.get('projects').then(response => {
+        let body = response.body
+        for (let key in body['projects']) {
+          if (body['projects'].hasOwnProperty(key)) {
+            this.projects[key.toLowerCase().replace(/[^a-z0-9]/g, '')] = {
+              'key': key,
+              'project': body['projects'][key]
+            }
+          }
+        }
+        this.projects = body
+        this.active = body['active']
+        console.log(this.projects)
+        return this.projects
+      })
+    }
+  },
+  created () {
+    this.fetch_active_projects()
+  }
 }
 </script>
