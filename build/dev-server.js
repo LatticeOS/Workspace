@@ -6,7 +6,6 @@ if (!process.env.NODE_ENV) {
 }
 
 var opn = require('opn')
-var cors = require('cors')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
@@ -58,8 +57,6 @@ app.use(devMiddleware)
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)
-
-app.use(cors());
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
