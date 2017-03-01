@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import WorkSpace from '@/components/WorkSpace'
 
-import HelpPanel from '@/components/workspace/HelpPanel.vue'
+import READMEPanel from '@/components/workspace/READMEPanel.vue'
 import ContainersPanel from '@/components/workspace/Containers.vue'
 import YAMLPanel from '@/components/workspace/YAML.vue'
 import LogsPanel from '@/components/workspace/Logs.vue'
@@ -17,7 +17,10 @@ export default new Router({
       name: 'WorkSpace',
       component: WorkSpace,
       children: [
-        { path: '', component: HelpPanel },
+        {
+          path: 'readme',
+          component: READMEPanel
+        },
         {
           path: 'containers',
           component: ContainersPanel
