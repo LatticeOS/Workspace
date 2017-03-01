@@ -1,5 +1,5 @@
 <template>
-  <codemirror v-model="code" :options="editorOptions"></codemirror>
+  <codemirror v-model="yml" :options="editorOptions"></codemirror>
 </template>
 
 <script>
@@ -8,7 +8,8 @@
 export default {
   data () {
     return {
-      code: '',
+      config: [],
+      yml: '',
       editorOptions: {
         // codemirror options
         tabSize: 4,
@@ -24,9 +25,16 @@ export default {
       }
     }
   },
-  mounted () {
-    // console.log('this is current editor object', this.editor)
-    // you can use this.editor to do something...
+  methods: {
+    fetch_project_yaml () {
+      this.$http.get(`projects/yml/${this.$route.params.workspace}`).then(response => {
+        this.config = response.body.config
+        this.yml = response.body.yml
+      })
+    }
+  },
+  created () {
+    this.fetch_project_yaml()
   }
 }
 </script>

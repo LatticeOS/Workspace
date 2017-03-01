@@ -5,7 +5,7 @@
             <md-table-head>Statue</md-table-head>
             <md-table-head>Icon</md-table-head>
             <md-table-head>Alice&ID</md-table-head>
-            <md-table-head>Image</md-table-head>
+            <md-table-head>Network</md-table-head>
         </md-table-row>
         </md-table-header>
 
@@ -25,24 +25,18 @@ export default {
   },
   data () {
     return {
-      containers: [
-        {
-          'name': 'VSCode',
-          'icon': 'https://code.visualstudio.com/images/favicon.ico',
-          'image': 'los/vscode+vue2'
-        },
-        {
-          'name': 'Vue2.x',
-          'icon': 'https://cn.vuejs.org/images/logo.png',
-          'image': 'los/vue2'
-        },
-        {
-          'name': 'Data volume',
-          'icon': 'https://www.docker.com/sites/default/files/whale_0.png',
-          'image': 'volume'
-        }
-      ]
+      'containers': []
     }
+  },
+  methods: {
+    fetch_project_containers () {
+      this.$http.get(`projects/${this.$route.params.workspace}`).then(response => {
+        this.containers = response.body.containers
+      })
+    }
+  },
+  created () {
+    this.fetch_project_containers()
   }
 }
 </script>
