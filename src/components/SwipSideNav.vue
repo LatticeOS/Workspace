@@ -1,15 +1,17 @@
 <template>
     <md-sidenav class="md-left">
         <md-list>
-            <md-list-item v-for="key in active" :href="key" :key="key">
-                <md-avatar>
-                    <img src="https://cn.vuejs.org/images/logo.png"/>
-                </md-avatar>
+            <md-list-item v-for="key in active" :key="key">
+                <router-link :to='`/${projects[key]["key"]}/readme`'>
+                    <md-avatar>
+                        <img src="https://cn.vuejs.org/images/logo.png"/>
+                    </md-avatar>
 
-                <div class="md-list-text-container">
-                    <span>{{ projects[key]['key'] }}</span>
-                    <p>{{ projects[key]['project'] }}</p>
-                </div>
+                    <div class="md-list-text-container">
+                        <span>{{ key }}</span>
+                        <p>{{ projects[key]['project'] }}</p>
+                    </div>
+                </router-link>
             </md-list-item>
             <md-list-item href="#">
                 <md-avatar class="md-avatar-icon">
@@ -50,9 +52,7 @@ export default {
             }
           }
         }
-        this.projects = body
-        this.active = body['active']
-        console.log(this.projects)
+        this.active = body['active'].filter(item => typeof item === 'string')
         return this.projects
       })
     }

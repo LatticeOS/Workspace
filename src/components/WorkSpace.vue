@@ -49,22 +49,27 @@ export default {
     return {
       navs: [
         {
+          'name': 'Readme',
+          'href': 'readme'
+        },
+        {
           'name': 'Containers',
-          'href': './containers'
+          'href': 'containers'
         },
         {
           'name': 'YAML',
-          'href': './yaml'
+          'href': 'yaml'
         },
         {
           'name': 'Logs',
-          'href': './logs'
+          'href': 'logs'
         },
         {
           'name': 'Options',
-          'href': './options'
+          'href': 'options'
         }
-      ]
+      ],
+      readme: ''
     }
   }
 }
