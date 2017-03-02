@@ -1,5 +1,5 @@
 <template>
-    <md-table v-once>
+    <md-table>
         <md-table-header>
         <md-table-row>
             <md-table-head>Statue</md-table-head>
@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     fetch_project_containers () {
-      this.$http.get(`projects/${this.$route.params.workspace}`).then(response => {
+      this.$http.get(`projects/${this.$route.params.workspace}`)
+      .then(response => {
         this.containers = response.body.containers
       })
     }
