@@ -1,6 +1,6 @@
 <template>
     <md-table-row>
-        <md-table-cell v-if="is_running">
+        <md-table-cell v-if="container.is_running">
             <md-icon>check_circle</md-icon>
             <md-tooltip md-direction="top">Runing</md-tooltip>
         </md-table-cell>
@@ -18,9 +18,11 @@
             <md-tooltip md-direction="top">{{ container.name }}</md-tooltip>
         </md-table-cell>
         <md-table-cell>
-            <md-chips v-model="container.ports" md-static>
-                <template scope="port">{{ port.value.HostPort }}/{{ port.key }}</template>
-            </md-chips>
+            <template v-for="(value, key) in container.ports">
+                <div class="md-chip md-theme-default" v-for="ivalue in value">
+                    {{ ivalue.HostPort }}:{{ key }}
+                </div>
+            </template>
         </md-table-cell>
     </md-table-row>
 </template>
