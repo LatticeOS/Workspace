@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "marked": "^0.3.6",
     "vue": "^2.2.2",
     "vue-codemirror": "^3.0.3",
     "vue-material": "^0.7.1",
