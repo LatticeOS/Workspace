@@ -1,7 +1,7 @@
 <template>
   <md-layout>
     <p v-for="(vlogs,tag) in logs" :key="tag">
-      <span>{{ tag }}</span>
+      <span style='color:#f00'>{{ tag }}</span>
       <span v-for="tlogs in vlogs" :key="tlogs">{{ tlogs }}</span>
     </p>
   </md-layout>
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     fetch_project_logs () {
-      this.$http.get(`/logs/${this.$route.params.workspace}/100`).then(response => {
+      this.$http.get(`logs/${this.$route.params.workspace}/100`).then(response => {
         this.logs = response.body.logs
       })
     }
