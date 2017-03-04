@@ -4,8 +4,8 @@
       <md-card style="width:100%">
         <md-card-header>
           <md-card-header-text>
-            <div class="md-title">Vue2.x</div>
-            <div class="md-subhead">vscode + webpack + vue2.x</div>
+            <div class="md-title">{{ $route.params.workspace }}</div>
+            <div class="md-subhead">{{ $route.params.summer }}</div>
           </md-card-header-text>
 
           <md-card-media>
