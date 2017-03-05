@@ -1,10 +1,5 @@
 <template>
-  <md-layout style="display: block;">
-    <template v-for="(value, key) in test">
-      <div class="md-chip md-theme-default" v-for="ivalue in value">
-        {{ ivalue.HostPort }}:{{ key }}
-      </div>
-    </template>
+  <md-layout style="display: block;" v-html='readme'>
   </md-layout>
 </template>
 <script>
