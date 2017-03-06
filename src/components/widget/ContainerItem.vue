@@ -6,7 +6,7 @@
         </md-table-cell>
         <md-table-cell v-else>
             <md-icon>stop</md-icon>
-            <md-tooltip md-direction="top">Stop</md-tooltip>
+            <md-tooltip md-direction="top">Stopped</md-tooltip>
         </md-table-cell>
         <md-table-cell>
             <md-avatar>
@@ -14,7 +14,7 @@
             </md-avatar>
         </md-table-cell>
         <md-table-cell>
-            <span>{{ container.name_without_project }}</span>
+            <router-link :to="container.name"> {{ container.name_without_project }} </router-link>
             <md-tooltip md-direction="top">{{ container.name }}</md-tooltip>
         </md-table-cell>
         <md-table-cell>
