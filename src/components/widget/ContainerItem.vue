@@ -24,6 +24,9 @@
                 </div>
             </template>
         </md-table-cell>
+        <md-table-cell>
+            
+        </md-table-cell>
     </md-table-row>
 </template>
 

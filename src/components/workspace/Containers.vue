@@ -6,6 +6,7 @@
             <md-table-head>Icon</md-table-head>
             <md-table-head>Alice&ID</md-table-head>
             <md-table-head>Network</md-table-head>
+            <md-table-head>Action</md-table-head>
         </md-table-row>
         </md-table-header>
 
