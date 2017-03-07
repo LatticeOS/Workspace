@@ -4,7 +4,7 @@
             <md-list-item v-for="key in active" :key="key">
                 <router-link :to='`/${projects[key]["key"]}/readme`'>
                     <md-avatar>
-                        <img src="https://cn.vuejs.org/images/logo.png"/>
+                        <img :src='`${$http.options.root}/projects/logo/${projects[key]["key"]}`'>
                     </md-avatar>
 
                     <div class="md-list-text-container">
@@ -13,19 +13,21 @@
                     </div>
                 </router-link>
             </md-list-item>
-            <md-list-item href="#">
-                <md-avatar class="md-avatar-icon">
-                    <md-icon>library_add</md-icon>
-                </md-avatar>
+            <md-list-item>
+                <router-link :to='`/new`'>
+                    <md-avatar class="md-avatar-icon">
+                        <md-icon>library_add</md-icon>
+                    </md-avatar>
 
-                <div class="md-list-text-container">
-                    <span>New Workspace</span>
-                </div>
+                    <div class="md-list-text-container">
+                        <span>New Workspace</span>
+                    </div>
 
-                <md-button class="md-icon-button md-list-action">
-                    <md-icon>info</md-icon>
-                    <md-tooltip md-direction="right">Pull & build new containers</md-tooltip>
-                </md-button>
+                    <md-button class="md-icon-button md-list-action">
+                        <md-icon>info</md-icon>
+                        <md-tooltip md-direction="right">Pull & build new containers</md-tooltip>
+                    </md-button>
+                </router-link>
             </md-list-item>
         </md-list>
     </md-sidenav>

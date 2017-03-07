@@ -9,7 +9,7 @@
           </md-card-header-text>
 
           <md-card-media>
-            <img src="https://cn.vuejs.org/images/logo.png">
+            <img :src='`${$http.options.root}/projects/logo/${$route.params.workspace}`'>
           </md-card-media>
         </md-card-header>
 
