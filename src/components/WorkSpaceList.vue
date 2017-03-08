@@ -22,41 +22,18 @@ export default {
   name: 'hello',
   data () {
     return {
-      'active': [],
-      'projects': []
     }
   },
   components: {
     WorkspcaeItem
   },
-  methods: {
-    fetch_active_projects () {
-      this.$http.get('projects').then(response => {
-        let body = response.body
-        let projects = {}
-        for (let key in body['projects']) {
-          if (body['projects'].hasOwnProperty(key)) {
-            let shortName = key.toLowerCase().replace(/[^a-z0-9]/g, '')
-            projects[shortName] = {
-              'key': key,
-              'short_name': shortName,
-              'working_dir': body['projects'][key]
-            }
-          }
-        }
-        let active = body['active'].filter(item => typeof item === 'string')
-        for (let key in active) {
-          projects[active[key]]['active'] = true
-        }
-        for (let key in projects) {
-          this.projects.push(projects[key])
-        }
-        return this.projects
-      })
+  computed: {
+    projects () {
+      return this.$store.getters.projects
     }
   },
   created () {
-    this.fetch_active_projects()
+    this.$store.dispatch('REFRESH_PROJECT_LIST')
   }
 }
 </script>

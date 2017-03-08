@@ -1,15 +1,15 @@
 <template>
     <md-sidenav class="md-left">
         <md-list>
-            <md-list-item v-for="key in active" :key="key">
-                <router-link :to='`/${projects[key]["key"]}/readme`'>
+            <md-list-item v-for="workspace of projects" :key="workspace.short_name">
+                <router-link :to='`/${workspace["key"]}/readme`'>
                     <md-avatar>
-                        <img :src='`${$http.options.root}/projects/logo/${projects[key]["key"]}`'>
+                        <img :src='`${$http.options.root}/projects/logo/${workspace["key"]}`'>
                     </md-avatar>
 
                     <div class="md-list-text-container">
-                        <span>{{ key }}</span>
-                        <p>{{ projects[key]['project'] }}</p>
+                        <span>{{ workspace.short_name }}</span>
+                        <p>{{ workspace['project'] }}</p>
                     </div>
                 </router-link>
             </md-list-item>
@@ -38,29 +38,15 @@ export default {
   name: 'hello',
   data () {
     return {
-      'active': [],
-      'projects': {}
     }
   },
-  methods: {
-    fetch_active_projects () {
-      this.$http.get('projects').then(response => {
-        let body = response.body
-        for (let key in body['projects']) {
-          if (body['projects'].hasOwnProperty(key)) {
-            this.projects[key.toLowerCase().replace(/[^a-z0-9]/g, '')] = {
-              'key': key,
-              'project': body['projects'][key]
-            }
-          }
-        }
-        this.active = body['active'].filter(item => typeof item === 'string')
-        return this.projects
-      })
+  computed: {
+    projects () {
+      return this.$store.getters.projects_active
     }
   },
   created () {
-    this.fetch_active_projects()
+    this.$store.dispatch('REFRESH_PROJECT_LIST')
   }
 }
 </script>
