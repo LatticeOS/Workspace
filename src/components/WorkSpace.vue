@@ -14,12 +14,12 @@
         </md-card-header>
 
         <md-card-actions>
-          <md-button class="md-raised md-primary">Start</md-button>
-          <md-button class="md-raised md-accent">Stop</md-button>
+          <md-button class="md-raised md-primary" @click.native="startWorkspace()">Start</md-button>
+          <md-button class="md-raised md-accent" @click.native="closeWorkspace()">Stop</md-button>
         </md-card-actions>
       </md-card>
     </md-layout>
-
+    <md-progress md-indeterminate v-if="loding"></md-progress>
     <md-layout md-gutter style="margin-top: 2em;">
       <md-layout md-flex-xsmall="100" md-flex-small="33" md-flex-medium="25" md-flex-large="25" md-flex-xlarge="20">
         <md-list>
@@ -37,6 +37,11 @@
         </md-card>
       </md-layout>
     </md-layout>
+    
+    <md-snackbar md-position='top right' ref="snackbar" md-duration="4000">
+      <span>Success</span>
+      <md-button class="md-accent" md-theme="light-blue" @click.native="$refs.snackbar.close()">Retry</md-button>
+    </md-snackbar>
   </md-layout>
 </template>
 
@@ -47,6 +52,7 @@ export default {
   },
   data () {
     return {
+      loding: false,
       navs: [
         {
           'name': 'Readme',
@@ -70,6 +76,25 @@ export default {
         }
       ],
       readme: ''
+    }
+  },
+  methods: {
+    startWorkspace () {
+      // start --data '{"id":"hello-node"}' -H'Content-type: application/json'
+      this.loding = true
+      this.$http.post(`start`, {'id': this.$route.params.workspace})
+      .then(response => {
+        if (response.ok) this.$refs.snackbar.open()
+        this.loding = false
+      })
+    },
+    closeWorkspace () {
+      this.loding = true
+      this.$http.post(`stop`, {'id': this.$route.params.workspace})
+      .then(response => {
+        if (response.ok) this.$refs.snackbar.open()
+        this.loding = false
+      })
     }
   }
 }
