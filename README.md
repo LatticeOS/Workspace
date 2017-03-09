@@ -21,3 +21,7 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+* [VUE Material](https://vuematerial.github.io/)
+* [Docker Compose UI](https://github.com/francescou/docker-compose-ui)
+* [Simple Docker UI](https://github.com/felixgborrego/simple-docker-ui)

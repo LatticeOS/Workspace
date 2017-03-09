@@ -1,6 +1,17 @@
 <template>
     <md-sidenav class="md-left">
         <md-list>
+            <md-list-item>
+                <router-link to='/'>
+                    <md-avatar class="md-avatar-icon">
+                        <md-icon>home</md-icon>
+                    </md-avatar>
+
+                    <div class="md-list-text-container">
+                        <span>Welcome</span>
+                    </div>
+                </router-link>
+            </md-list-item>
             <md-list-item v-for="workspace of projects" :key="workspace.short_name">
                 <router-link :to='`/${workspace["key"]}/readme`'>
                     <md-avatar>

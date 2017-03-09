@@ -1,4 +1,5 @@
 <template>
+  <md-layout style="max-width: 800px;margin: 0 auto;">
     <md-table>
         <md-table-header>
         <md-table-row>
@@ -11,9 +12,20 @@
         </md-table-header>
 
         <md-table-body v-for="workspace of projects", :key="workspace.short_name">
-             <WorkspcaeItem :workspace='workspace'/>
+            <WorkspcaeItem :workspace='workspace'/>
         </md-table-body>
     </md-table>
+    <md-speed-dial md-open="hover" md-direction="top" class="md-fab-bottom-right" md-theme="light-blue">
+      <md-button class="md-fab" md-fab-trigger>
+        <md-icon md-icon-morph>add</md-icon>
+        <md-icon>add</md-icon>
+      </md-button>
+
+      <md-button class="md-fab md-primary md-mini md-clean">
+        <md-icon>cloud_download</md-icon>
+      </md-button>
+    </md-speed-dial>
+  </md-layout>
 </template>
 <script>
 import WorkspcaeItem from '@/components/widget/WorkspcaeItem.vue'

@@ -16,7 +16,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800, 
     height: 600, 
-    icon: 'static/logo_small.png'
+    icon: 'static/logo.png'
   })
 
   // and load the index.html of the app.

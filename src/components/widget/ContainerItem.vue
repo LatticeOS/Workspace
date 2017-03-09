@@ -20,7 +20,7 @@
         <md-table-cell>
             <template v-for="(value, key) in container.ports">
                 <div class="md-chip md-theme-default" v-for="ivalue in value">
-                    {{ ivalue.HostPort }}:{{ key }}
+                    <a :href='`http://${$store.state.host}:${ivalue.HostPort}`'>{{ ivalue.HostPort }}:{{ key }}</a>
                 </div>
             </template>
         </md-table-cell>

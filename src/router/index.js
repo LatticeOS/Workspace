@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import WorkSpace from '@/components/WorkSpace'
 import WorkSpaceList from '@/components/WorkSpaceList'
 
+import PageView from '@/components/pages/PageView'
+import WelcomePage from '@/components/pages/WelcomePage'
+
 import READMEPanel from '@/components/workspace/READMEPanel'
 import ContainerPanel from '@/components/workspace/Container'
 import ContainersPanel from '@/components/workspace/Containers'
@@ -15,9 +18,19 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      name: 'WelcomePage',
+      component: WelcomePage
+    },
+    {
       path: '/new',
       name: 'NewWorkspace',
       component: WorkSpaceList
+    },
+    {
+      path: '/page/:id',
+      name: 'Page',
+      component: PageView
     },
     {
       path: '/:workspace',

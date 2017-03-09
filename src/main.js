@@ -17,6 +17,13 @@ Vue.use(VueCodeMirror)
 Vue.use(VueMaterial)
 Vue.use(VueResource)
 
+Vue.material.registerTheme('default', {
+  background: {
+    color: 'grey',
+    hue: 200
+  }
+})
+
 Vue.http.options.root = 'http://112.74.30.227:5000/api/v1'
 // Vue.http.options.root = '/static/test/v1'
 /* eslint-disable no-new */

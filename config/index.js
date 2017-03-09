@@ -21,6 +21,10 @@ module.exports = {
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
   },
+  deploy: {
+    repo: 'https://github.com/LatticeOS/Workspace.git',
+    branch: 'dist'
+  },
   dev: {
     env: require('./dev.env'),
     port: 8080,

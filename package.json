@@ -8,6 +8,7 @@
   "scripts": {
     "start": "electron .",
     "start-dev": "electron main.dev.js",
+    "deploy": "node build/deploy.js",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"

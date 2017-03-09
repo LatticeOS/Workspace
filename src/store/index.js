@@ -12,9 +12,15 @@ export default new Vuex.Store({
   // actions,
   // getters,
   state: {
-    projects: []
+    projects: [],
+    host: '',
+    workdir: ''
   },
   mutations: {
+    REFRESH_HOST: (state, { host, workdir }) => {
+      state.host = host || Vue.http.options.root
+      state.workdir = workdir
+    },
     REFRESH_PROJECT_LIST: (state, { projects }) => {
       state.projects = []
       for (let key in projects) {
@@ -29,6 +35,13 @@ export default new Vuex.Store({
     projects_active: state => state.projects.filter(item => item.active)
   },
   actions: {
+    REFRESH_HOST ({ commit }) {
+      Vue.http.get('host')
+      .then(response => {
+        let body = response.body
+        commit('REFRESH_HOST', body)
+      })
+    },
     REFRESH_PROJECT_LIST ({ commit }) {
       Vue.http.get('projects').then(response => {
         let body = response.body
