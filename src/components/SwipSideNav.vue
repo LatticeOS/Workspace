@@ -15,7 +15,9 @@
             <md-list-item v-for="workspace of projects" :key="workspace.short_name">
                 <router-link :to='`/${workspace["key"]}/readme`'>
                     <md-avatar>
-                        <img :src='`${$http.options.root}/projects/logo/${workspace["key"]}`'>
+                        <object :data='`${$http.options.root}/projects/logo/${workspace["key"]}`' type="image/png">
+                        <img src="/static/logo.png" />
+                        </object>
                     </md-avatar>
 
                     <div class="md-list-text-container">

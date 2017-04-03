@@ -9,7 +9,9 @@
           </md-card-header-text>
 
           <md-card-media>
-            <img :src='`${$http.options.root}/projects/logo/${$route.params.workspace}`'>
+            <object :data='`${$http.options.root}/projects/logo/${$route.params.workspace}`' type="image/png">
+              <img src="/static/logo.png" />
+            </object>
           </md-card-media>
         </md-card-header>
 
@@ -82,7 +84,7 @@ export default {
     startWorkspace () {
       // start --data '{"id":"hello-node"}' -H'Content-type: application/json'
       this.loding = true
-      this.$http.post(`start`, {'id': this.$route.params.workspace})
+      this.$http.post(`projects`, {'id': this.$route.params.workspace})
       .then(response => {
         if (response.ok) this.$refs.snackbar.open()
         this.loding = false
@@ -90,7 +92,7 @@ export default {
     },
     closeWorkspace () {
       this.loding = true
-      this.$http.post(`stop`, {'id': this.$route.params.workspace})
+      this.$http.post(`down`, {'id': this.$route.params.workspace})
       .then(response => {
         if (response.ok) this.$refs.snackbar.open()
         this.loding = false
