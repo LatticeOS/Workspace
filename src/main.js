@@ -24,7 +24,7 @@ Vue.material.registerTheme('default', {
   }
 })
 
-Vue.http.options.root = 'http://112.74.30.227:5000/api/v1'
+Vue.http.options.root = 'http://api:5000/api/v1'
 // Vue.http.options.root = '/static/test/v1'
 /* eslint-disable no-new */
 new Vue({
