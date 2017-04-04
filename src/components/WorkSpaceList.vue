@@ -18,7 +18,9 @@
     <md-speed-dial md-open="hover" md-direction="top" class="md-fab-bottom-right" md-theme="light-blue">
       <md-button class="md-fab" md-fab-trigger>
         <md-icon md-icon-morph>add</md-icon>
-        <md-icon>add</md-icon>
+        <router-link to='/newProject'>
+          <md-icon>add</md-icon>
+        </router-link>
       </md-button>
 
       <md-button class="md-fab md-primary md-mini md-clean">

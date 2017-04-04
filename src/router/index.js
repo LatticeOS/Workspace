@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import WorkSpace from '@/components/WorkSpace'
+import NewProject from '@/components/NewProject'
 import WorkSpaceList from '@/components/WorkSpaceList'
 
 import PageView from '@/components/pages/PageView'
@@ -26,6 +27,11 @@ export default new Router({
       path: '/new',
       name: 'NewWorkspace',
       component: WorkSpaceList
+    },
+    {
+      path: '/newProject',
+      name: 'NewProject',
+      component: NewProject
     },
     {
       path: '/page/:id',
