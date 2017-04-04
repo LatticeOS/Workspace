@@ -10,4 +10,6 @@ COPY package.json $HOME/package.json
 
 WORKDIR $HOME
 
-ENTRYPOINT [ "/opt/electron/electron",  $HOME]
+COPY start.sh /usr/local/bin/start.sh
+
+ENTRYPOINT [ "/usr/local/bin/start.sh"]
