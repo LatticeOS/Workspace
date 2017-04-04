@@ -1,0 +1,7 @@
+{
+  "name": "workspaces",
+  "version": "0.0.3",
+  "main": "main.js",
+  "description": "docker-compose GUI",
+  "author": "Gitai <i@gitai.me>"
+}
