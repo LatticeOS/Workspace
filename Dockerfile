@@ -1,4 +1,4 @@
-FROM jeff/vscode
+FROM jess/vscode
 LABEL maintainer "Gitai <i@gitai.me>"
 
 ENV HOME /home/user
