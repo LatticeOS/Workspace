@@ -74,9 +74,9 @@ RUN buildDeps=' \
 	&& apt-get purge -y --auto-remove $buildDeps
 
 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+#RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 
-COPY . $HOME/Workspaces
+#COPY . $HOME/Workspaces
 
 WORKDIR $HOME
 
