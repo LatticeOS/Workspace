@@ -4,9 +4,7 @@ LABEL maintainer "Gitai <i@gitai.me>"
 ENV HOME /home/user
 
 
-RUN apt-get update && apt-get install -y \
-	git \
-	curl
+RUN apt-get install -y git curl
 
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 
