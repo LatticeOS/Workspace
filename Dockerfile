@@ -50,10 +50,14 @@ RUN apt-get update && apt-get install -y \
 	git \
 	--no-install-recommends
 
+
+#RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+
 ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
 	&& chown -R user:user $HOME
 
+# code_1.11.1-1491486998_amd64.deb
 # https://code.visualstudio.com/Download
 ENV CODE_VERSION 1.10.2-1488981323
 ENV CODE_COMMIT 8076a19fdcab7e1fc1707952d652f0bb6c6db331
@@ -73,10 +77,7 @@ RUN buildDeps=' \
 	&& rm -rf /tmp/vs.deb \
 	&& apt-get purge -y --auto-remove $buildDeps
 
-
-#RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-
-#COPY . $HOME/Workspaces
+COPY . $HOME/Workspaces
 
 WORKDIR $HOME
 
