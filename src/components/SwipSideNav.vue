@@ -27,7 +27,7 @@
                 </router-link>
             </md-list-item>
             <md-list-item>
-                <router-link :to='`/new`'>
+                <router-link :to='`/new_workspace`'>
                     <md-avatar class="md-avatar-icon">
                         <md-icon>library_add</md-icon>
                     </md-avatar>
@@ -39,6 +39,22 @@
                     <md-button class="md-icon-button md-list-action">
                         <md-icon>info</md-icon>
                         <md-tooltip md-direction="right">Pull & build new containers</md-tooltip>
+                    </md-button>
+                </router-link>
+            </md-list-item>
+            <md-list-item>
+                <router-link :to='`/new_container`'>
+                    <md-avatar class="md-avatar-icon">
+                        <md-icon>library_add</md-icon>
+                    </md-avatar>
+
+                    <div class="md-list-text-container">
+                        <span>New Container</span>
+                    </div>
+
+                    <md-button class="md-icon-button md-list-action">
+                        <md-icon>info</md-icon>
+                        <md-tooltip md-direction="right">Pull & build new container</md-tooltip>
                     </md-button>
                 </router-link>
             </md-list-item>

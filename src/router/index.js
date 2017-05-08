@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import WorkSpace from '@/components/WorkSpace'
 import NewProject from '@/components/NewProject'
+// import NewContainer from '@/components/NewContainer'
 import WorkSpaceList from '@/components/WorkSpaceList'
 
 import PageView from '@/components/pages/PageView'
@@ -24,10 +25,16 @@ export default new Router({
       component: WelcomePage
     },
     {
-      path: '/new',
+      path: '/new_workspace',
       name: 'NewWorkspace',
       component: WorkSpaceList
     },
+/*    {
+      path: '/new_container',
+      name: 'NewContainer',
+      component: NewContainer
+    },
+*/
     {
       path: '/newProject',
       name: 'NewProject',

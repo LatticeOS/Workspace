@@ -1,23 +1,33 @@
 <template>
-  <md-layout>
-    <codemirror v-model="yml" :options="editorOptions"></codemirror>
-    <md-button class="md-raised md-primary" @click.native="update()">Update</md-button>
+  <md-layout style="max-width: 800px;margin: 0 auto;" novalidate @submit.stop.prevent="submit">
+    <md-input-container>
+      <label>Container Name</label>
+      <md-input v-model="name" placeholder="Project Name" required></md-input>
+    </md-input-container>
+    <md-input-container>
+      <label>Descript</label>
+      <md-textarea v-model="desc" rows="5"></md-textarea>
+    </md-input-container>
+    <md-input-container>
+      <label>YAML</label>
+      <codemirror v-model="yml" :options="editorOptions" style="width:100%"></codemirror>
+    </md-input-container>
+    <md-button class="md-raised md-primary" @click.native="save()">Save</md-button>
     <md-snackbar md-position='top right' ref="snackbar" md-duration="4000">
-      <span v-model="msg">Success</span>
+      <span>Success</span>
       <md-button class="md-accent" md-theme="light-blue" @click.native="$refs.snackbar.close()">Retry</md-button>
     </md-snackbar>
   </md-layout>
 </template>
-
 <script>
-// Similarly, you can also introduce the resource pack you want to use within the component
-// require('codemirror/some-resource')
 export default {
+  name: 'NewProject',
   data () {
     return {
-      config: [],
+      name: '',
+      logo: '',
+      desc: '',
       yml: '',
-      msg: 'Success!',
       editorOptions: {
         // codemirror options
         tabSize: 4,
@@ -34,15 +44,9 @@ export default {
     }
   },
   methods: {
-    fetch_project_yaml () {
-      this.$http.get(`projects/yml/${this.$route.params.workspace}`).then(response => {
-        this.config = response.body.config
-        this.yml = response.body.yml
-      })
-    },
     save () {
-      this.$http.put(`update-project`, {
-        'name': this.$route.params.workspace,
+      this.$http.post(`create-project`, {
+        'name': this.name,
         'yml': this.yml
       }).then(response => {
         if (response.ok) this.msg = 'Success!'
@@ -53,10 +57,11 @@ export default {
         this.$refs.snackbar.open()
       })
     }
-  },
-  created () {
-    this.fetch_project_yaml()
   }
 }
 </script>
-
+<style>
+.CodeMirror{
+  width: 100%;
+}
+</style>

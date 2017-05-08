@@ -58,7 +58,7 @@ export default new Vuex.Store({
         }
         let active = body['active'].filter(item => typeof item === 'string')
         for (let key in active) {
-          projects[active[key]]['active'] = true
+          if (projects[key]) projects[key]['active'] = true
         }
         commit('REFRESH_PROJECT_LIST', { projects })
       })
